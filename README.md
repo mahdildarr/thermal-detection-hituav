@@ -50,12 +50,17 @@ python src/compare_domains.py --data data/hituav.yaml --thermal runs/thermal/yol
 - Thermal model: mAP@0.5, mAP@0.5:0.95, per-class AP
 - Domain comparison: per-class precision / recall at the same confidence threshold (0.25), IoU ≥ 0.5
 
-## Roadmap
+## Progress
 
-- [x] Data preparation, training and comparison pipeline
-- [ ] Zero-shot baseline
-- [ ] Thermal fine-tuning
-- [ ] Effect of augmentation strategies (brightness, blur, scale)
+- [x] HIT-UAV dataset checks and training configuration
+- [x] Thermal fine-tuning with brightness-only augmentation
+- [x] COCO to HIT-UAV class mapping for the visible-light baseline
+- [x] Per-class visible-light vs thermal comparison
+- [x] Colab notebook
+
+Next:
+
+- [ ] Zero-shot baseline and thermal fine-tuning runs
 - [ ] Error analysis by altitude and viewing angle
 
 ## Project structure
