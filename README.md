@@ -4,8 +4,6 @@
 
 <p align="center"><img src="docs/assets/pipeline.svg" width="100%" alt="Pipeline"></p>
 
-> **Status:** Work in progress. Result tables will be added as experiments are completed.
-
 ## Problem
 
 At night and in low-visibility conditions, UAVs rely on thermal cameras. However, most detection models are trained on visible-light images (e.g. COCO). Thermal images carry no color or texture information; objects appear through temperature differences. As a result, models trained on visible light suffer a large performance drop on thermal imagery.
@@ -18,7 +16,6 @@ At night and in low-visibility conditions, UAVs rely on thermal cameras. However
 | 2. Baseline | Evaluate a COCO-pretrained model directly (zero-shot) on thermal data | `src/compare_domains.py` |
 | 3. Domain adaptation | Fine-tune the same model on HIT-UAV; color augmentation off, brightness augmentation on | `src/train.py` |
 | 4. Comparison | Per-class precision / recall of both models on the same test images | `src/compare_domains.py` |
-
 
 ## Data
 
@@ -52,13 +49,6 @@ python src/compare_domains.py --data data/hituav.yaml --thermal runs/thermal/yol
 
 - Thermal model: mAP@0.5, mAP@0.5:0.95, per-class AP
 - Domain comparison: per-class precision / recall at the same confidence threshold (0.25), IoU ≥ 0.5
-
-## Results
-
-| Model | mAP@0.5 | Person P / R | Car P / R | Overall P / R |
-|---|---|---|---|---|
-| Visible-light model (COCO, zero-shot) | – | _TBD_ | _TBD_ | _TBD_ |
-| Thermal model (HIT-UAV fine-tuned) | _TBD_ | _TBD_ | _TBD_ | _TBD_ |
 
 ## Roadmap
 
