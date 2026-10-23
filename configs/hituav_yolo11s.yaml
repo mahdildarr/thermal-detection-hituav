@@ -1,0 +1,22 @@
+# YOLO11s fine-tuned on HIT-UAV thermal images. Every key under `train` goes to ultralytics YOLO.train().
+eval_split: test               # reported once at the end; model selection uses val
+train:
+  model: yolo11s.pt            # COCO-pretrained (visible-light) initialisation
+  data: data/hituav.yaml       # written by `python -m thermaldet.prepare_data`
+  epochs: 60
+  imgsz: 640                   # native resolution is 640 x 512
+  batch: 16
+  patience: 20
+  # Thermal images carry a single intensity channel: hue / saturation jitter is meaningless,
+  # brightness jitter imitates changes in temperature contrast and sensor gain.
+  hsv_h: 0.0
+  hsv_s: 0.0
+  hsv_v: 0.3
+  flipud: 0.5                  # nadir views (up to 90°) have no preferred "up"
+  fliplr: 0.5
+  seed: 0
+  deterministic: true
+  project: runs/thermal
+  name: yolo11s_thermal
+  exist_ok: true
+  plots: true
